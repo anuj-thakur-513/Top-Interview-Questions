@@ -4,7 +4,7 @@ This repo contains code for Top 150 Interview Questions of LeetCode. This will m
 
 # Contributing
 
-\***\*Contributions are always welcome!\*\***
+\*\*Contributions are always welcome!\*\*
 
 **Rules for contribution are very simple:**
 
