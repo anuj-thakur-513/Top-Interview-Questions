@@ -1,6 +1,7 @@
 # Top Interview Questions
 
-This repo contains code for Top 150 Interview Questions of LeetCode. This will mainly contain code in JAVA.
+This repo contains code for Top 150 Interview Questions of LeetCode. This will mainly contain code in JAVA.    
+It is open for contributions of solutions in different languages.
 
 # Contributing
 
