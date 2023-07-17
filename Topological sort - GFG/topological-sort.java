@@ -55,39 +55,45 @@ class Main {
 // } Driver Code Ends
 
 
+
 /*Complete the function below*/
 
 
 class Solution
 {
     //Function to return list containing vertices in Topological order. 
-    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
-        boolean[] vis = new boolean[V];
-        Stack<Integer> stack = new Stack<>();
-        
-        for(int i = 0; i < V; i++) {
-            if(!vis[i]) {
-                dfs(i, vis, adj, stack);
+    static int[] topoSort(int v, ArrayList<ArrayList<Integer>> adj) 
+    {
+        int[] indegree = new int[v];
+        for(int i = 0; i < v; i++){
+            for(int it: adj.get(i)){
+                indegree[it]++;
             }
         }
         
-        int[] ans = new int[V];
+        Queue<Integer> q = new LinkedList<>();
+        for(int i = 0; i < v; i++){
+            if(indegree[i] == 0){
+                q.offer(i);
+            }
+        }
+        
+        int[] topo = new int[v];
         int i = 0;
-        while(!stack.isEmpty()) {
-            ans[i++] = stack.pop();
-        }
-        
-        return ans;
-    }
-    
-    private static void dfs(int node, boolean[] vis, ArrayList<ArrayList<Integer>> adj, Stack<Integer> stack) {
-        vis[node] = true;
-        for(int it: adj.get(node)) {
-            if(!vis[it]) {
-                dfs(it, vis, adj, stack);
+        while(!q.isEmpty()){
+            int node = q.poll();
+            topo[i++] = node;
+            // node is in topo sort
+            // so remove it from the indegree
+            
+            for(int it: adj.get(node)){
+                indegree[it]--;
+                if(indegree[it] == 0){
+                    q.offer(it);
+                }
             }
         }
         
-        stack.push(node);
+        return topo;
     }
 }
